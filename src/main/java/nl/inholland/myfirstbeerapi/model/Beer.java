@@ -1,15 +1,15 @@
-package nl.inholland.myfirstapi.model;
+package nl.inholland.myfirstbeerapi.model;
 
-public class Guitar
+public class Beer
 {
     private long id;
     private String brand;
     private String model;
     private double price;
 
-    public Guitar() { }
+    public Beer() { }
 
-    public Guitar(long id, String brand, String model, double price) {
+    public Beer(long id, String brand, String model, double price) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -48,6 +48,7 @@ public class Guitar
         this.price = price;
     }
 
+    // Convert the beer-object to a single string
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Guitar{");
