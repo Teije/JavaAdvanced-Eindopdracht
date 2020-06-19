@@ -3,6 +3,7 @@ package nl.inholland.myfirstbeerapi.service;
 import nl.inholland.myfirstbeerapi.model.Beer;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,5 +23,34 @@ public class BeerService {
 
     public List<Beer> getAllBeers() {
         return beers;
+    }
+
+    // Return all beers from the supplied brand
+    public List<Beer> getBeersByBrand(String brand)
+    {
+        var result = new ArrayList<Beer>();
+
+        for (var beer: beers)
+        {
+            if(beer.getBrand().toLowerCase().equals(brand.toLowerCase()))
+            {
+                result.add(beer);
+            }
+        }
+        return result;
+    }
+
+    public List<Beer> getBeersAtOrBelowPrice(Integer price)
+    {
+        var result = new ArrayList<Beer>();
+
+        for (var beer: beers)
+        {
+            if(beer.getPrice() <= price)
+            {
+                result.add(beer);
+            }
+        }
+        return result;
     }
 }

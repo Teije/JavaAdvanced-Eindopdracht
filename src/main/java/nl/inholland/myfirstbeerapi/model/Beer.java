@@ -51,12 +51,13 @@ public class Beer
     // Convert the beer-object to a single string
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Guitar{");
-        sb.append("id=").append(id);
-        sb.append(", brand='").append(brand).append('\'');
-        sb.append(", price=").append(price);
-        sb.append(", model='").append(model).append('\'');
-        sb.append('}');
+        final StringBuffer sb = new StringBuffer("\nBeer {");
+        sb.append("\nid=").append(id);
+        sb.append(", \nbrand='").append(brand).append('\'');
+        sb.append(", \nprice=").append(price);
+        sb.append(", \nmodel='").append(model).append('\'');
+        sb.append("}");
+        sb.append("\n");
         return sb.toString();
     }
 }
