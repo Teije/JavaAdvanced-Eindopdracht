@@ -1,28 +1,25 @@
 package nl.inholland.myfirstbeerapi.service;
 
+import nl.inholland.myfirstbeerapi.dao.BeerRepository;
 import nl.inholland.myfirstbeerapi.model.Beer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class BeerService {
 
-    List<Beer> beers;
+    @Autowired
+    private BeerRepository beerRepository;
 
-    public BeerService() {
-
-        this.beers =  Arrays.asList(
-                new Beer(1L,"Jopen", "Mooie Nel IPA", 3),
-                new Beer(2l, "Jopen", "Gelovige Thomas", 2),
-                new Beer(3L, "Brouwerij 't IJ", "Eiwit", 4)
-        );
+    public BeerService()
+    {
     }
 
     public List<Beer> getAllBeers() {
-        return beers;
+        return (List<Beer>) beerRepository.findAll();
     }
 
     // Return all beers from the supplied brand
@@ -30,7 +27,7 @@ public class BeerService {
     {
         var result = new ArrayList<Beer>();
 
-        for (var beer: beers)
+        for (var beer: beerRepository.findAll())
         {
             if(beer.getBrand().toLowerCase().equals(brand.toLowerCase()))
             {
@@ -44,7 +41,7 @@ public class BeerService {
     {
         var result = new ArrayList<Beer>();
 
-        for (var beer: beers)
+        for (var beer: beerRepository.findAll())
         {
             if(beer.getPrice() <= price)
             {
@@ -52,5 +49,10 @@ public class BeerService {
             }
         }
         return result;
+    }
+
+    public void addBeer(Beer beer) {
+        beerRepository.save(beer);
+        System.out.println(beer.toString());
     }
 }

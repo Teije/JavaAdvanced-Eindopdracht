@@ -17,12 +17,12 @@ public class BeerController
 {
 
     @Autowired
-    private BeerService service;
+    private BeerService beerService;
 
     // GET: Get all beers
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllBeers() {
-        List<Beer> beers = service.getAllBeers();
+        List<Beer> beers = beerService.getAllBeers();
         return ResponseEntity
                 .status(200)
                 .body(beers.toString());
@@ -34,7 +34,7 @@ public class BeerController
     {
         try
         {
-            List<Beer> beers = service.getBeersByBrand(brand);
+            List<Beer> beers = beerService.getBeersByBrand(brand);
             return ResponseEntity
                     .status(200)
                     .body(beers.toString());
@@ -51,7 +51,7 @@ public class BeerController
     {
         try
         {
-            List<Beer> beers = service.getBeersAtOrBelowPrice(maxPrice);
+            List<Beer> beers = beerService.getBeersAtOrBelowPrice(maxPrice);
             return ResponseEntity
                     .status(200)
                     .body(beers.toString());
@@ -60,5 +60,11 @@ public class BeerController
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity createBeer(@RequestBody Beer beer) {
+        beerService.addBeer(beer);
+        return ResponseEntity.status(HttpStatus.CREATED).body(beer.getId());
     }
 }
