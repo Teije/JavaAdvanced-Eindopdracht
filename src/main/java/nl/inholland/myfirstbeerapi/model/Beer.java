@@ -15,34 +15,34 @@ public class Beer
         this.model = model;
         this.price = price;
     }
+    // Id
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
 
+    // Brand
     public String getBrand() {
         return brand;
     }
-
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
+    // Model
     public String getModel() {
         return model;
     }
-
     public void setModel(String model) {
         this.model = model;
     }
 
+    // Price
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         if (price < 0) throw new IllegalArgumentException("Price cannot be below zero");
         this.price = price;

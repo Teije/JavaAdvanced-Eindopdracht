@@ -14,9 +14,7 @@ public class BeerService {
     @Autowired
     private BeerRepository beerRepository;
 
-    public BeerService()
-    {
-    }
+    public BeerService() { }
 
     public List<Beer> getAllBeers() {
         return (List<Beer>) beerRepository.findAll();
@@ -37,6 +35,7 @@ public class BeerService {
         return result;
     }
 
+    // Get all beers at or below the supplied price
     public List<Beer> getBeersAtOrBelowPrice(Integer price)
     {
         var result = new ArrayList<Beer>();
@@ -51,6 +50,7 @@ public class BeerService {
         return result;
     }
 
+    // Add a beer
     public void addBeer(Beer beer) {
         beerRepository.save(beer);
         System.out.println(beer.toString());

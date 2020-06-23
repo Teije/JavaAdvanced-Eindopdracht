@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface BeerRepository extends CrudRepository<Beer, Long>
 {
+    // Get all beers for an equal or greater than the supplied value & order the result by Id
     List<Beer> getAllByPriceGreaterThanEqualOrderById(double value);
 }

@@ -34,26 +34,27 @@ public class MyApplicationRunner implements ApplicationRunner
     @Override
     public void run(ApplicationArguments args) throws Exception
     {
-        // Create a new
+        // Create a new list of beers
         List<Beer> beers =
                 Arrays.asList(
                         new Beer(1L,"Jopen", "Mooie Nel IPA", 3),
                         new Beer(2l, "Jopen", "Gelovige Thomas", 2),
                         new Beer(3L, "Brouwerij 't IJ", "Eiwit", 4));
-
+        // Save these beers using the repository
         beers.forEach(beerRepository::save);
-
+        // Print all of the beers to the console
         beerRepository.findAll().forEach(System.out::println);
-
+        // Get all beers and set a stock amount for them
         beerRepository
                 .findAll()
                 .forEach(beer -> stockRepository.save(new Stock(new Random().nextInt(100), beer)));
-
+        // Print the entire beer stock
         stockRepository.findAll().forEach(System.out::println);
-
+        // Get the entire stock which has an amount of 30 or greater
         Iterable<Stock> stocks = stockRepository.getAllByQuantityGreaterThanEqualOrderByQuantity(30);
+        // Print te entire stock
         stocks.forEach(System.out::println);
-
+        // Get the stock of a beer by beerId
         int quantity = stockRepository.getStockValueByBeerId(1000001L);
         System.out.println("Quantity: " + quantity);
     }

@@ -26,35 +26,34 @@ public class Stock {
     @JoinColumn(name="guitar_id")
     private Beer beer;
 
-    public Stock() {
-    }
+    public Stock() { }
 
     public Stock(int quantity, Beer beer) {
         this.quantity = quantity;
         this.beer = beer;
     }
 
+    // Id
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
 
+    // Quantity
     public int getQuantity() {
         return quantity;
     }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    // Beer
     public Beer getBeer() {
         return beer;
     }
-
-    public void setGuitar(Beer beer) {
+    public void setBeer(Beer beer) {
         this.beer = beer;
     }
 

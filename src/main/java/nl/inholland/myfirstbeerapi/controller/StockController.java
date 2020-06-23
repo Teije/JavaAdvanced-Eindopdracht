@@ -20,6 +20,7 @@ public class StockController {
         this.stockService = stockService;
     }
 
+    // Get all stocks
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllStocks() {
         try {

@@ -11,13 +11,7 @@ public class Config
 {
     private int quantity;
 
-    public void setQuantity(int quantity)
-    {
-        this.quantity = quantity;
-    }
-
-    public int getQuantity()
-    {
-        return quantity;
-    }
+    // Quantity
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public int getQuantity() { return quantity; }
 }

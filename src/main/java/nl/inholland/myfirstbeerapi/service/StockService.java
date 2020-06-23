@@ -13,6 +13,7 @@ public class StockService
     @Autowired
     private StockRepository stockRepository;
 
+    // Get all stocks available
     public List<Stock> getAllStocks() {
         System.out.println("In service");
         return (List<Stock>) stockRepository.findAll();
