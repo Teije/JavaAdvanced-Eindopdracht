@@ -9,5 +9,4 @@ public class MyFirstBeerApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MyFirstBeerApiApplication.class, args);
 	}
-
 }

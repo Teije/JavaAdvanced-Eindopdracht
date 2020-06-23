@@ -3,6 +3,7 @@ package nl.inholland.myfirstbeerapi.configuration;
 import nl.inholland.myfirstbeerapi.dao.BeerRepository;
 import nl.inholland.myfirstbeerapi.dao.StockRepository;
 import nl.inholland.myfirstbeerapi.model.Beer;
+import nl.inholland.myfirstbeerapi.model.Config;
 import nl.inholland.myfirstbeerapi.model.Stock;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -21,16 +22,19 @@ public class MyApplicationRunner implements ApplicationRunner
 {
     private BeerRepository beerRepository;
     private StockRepository stockRepository;
+    private Config config;
 
-    public MyApplicationRunner(BeerRepository beerRepository, StockRepository stockRepository)
+    public MyApplicationRunner(BeerRepository beerRepository, StockRepository stockRepository, Config config)
     {
         this.beerRepository = beerRepository;
         this.stockRepository = stockRepository;
+        this.config = config;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception
     {
+        // Create a new
         List<Beer> beers =
                 Arrays.asList(
                         new Beer(1L,"Jopen", "Mooie Nel IPA", 3),
