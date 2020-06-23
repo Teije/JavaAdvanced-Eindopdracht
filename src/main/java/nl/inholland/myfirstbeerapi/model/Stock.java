@@ -1,6 +1,11 @@
 package nl.inholland.myfirstbeerapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.java.Log;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,6 +19,10 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Getter
+@Setter
+@NoArgsConstructor
+@Log
 public class Stock {
 
     @Id
@@ -26,39 +35,14 @@ public class Stock {
     @JoinColumn(name="guitar_id")
     private Beer beer;
 
-    public Stock() { }
-
-    public Stock(int quantity, Beer beer) {
+    public Stock(Beer beer, int quantity) {
         this.quantity = quantity;
-        this.beer = beer;
-    }
-
-    // Id
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    // Quantity
-    public int getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    // Beer
-    public Beer getBeer() {
-        return beer;
-    }
-    public void setBeer(Beer beer) {
         this.beer = beer;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         final StringBuffer sb = new StringBuffer("Stock{");
         sb.append("id=").append(id);
         sb.append(", quantity=").append(quantity);

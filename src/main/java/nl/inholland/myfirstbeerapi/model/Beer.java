@@ -1,13 +1,24 @@
 package nl.inholland.myfirstbeerapi.model;
+import lombok.*;
+import lombok.extern.java.Log;
 
+import javax.persistence.*;
+
+@Entity
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"brand", "model"})})
+@Getter
+@Setter
+@NoArgsConstructor
+@Log
 public class Beer
 {
-    private long id;
-    private String brand;
-    private String model;
-    private double price;
-
-    public Beer() { }
+    @Id
+    @SequenceGenerator(name="beer_seq", initialValue = 1000001)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guitar_seq")
+    long id;
+    String brand;
+    String model;
+    double price;
 
     public Beer(long id, String brand, String model, double price) {
         this.id = id;
@@ -23,26 +34,8 @@ public class Beer
         this.id = id;
     }
 
-    // Brand
-    public String getBrand() {
-        return brand;
-    }
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    // Model
-    public String getModel() {
-        return model;
-    }
-    public void setModel(String model) {
-        this.model = model;
-    }
-
     // Price
-    public double getPrice() {
-        return price;
-    }
+    public double getPrice() { return price; }
     public void setPrice(double price) {
         if (price < 0) throw new IllegalArgumentException("Price cannot be below zero");
         this.price = price;

@@ -18,7 +18,18 @@
 		<java.version>11</java.version>
 	</properties>
 
+
 	<dependencies>
+		<!--
+		Project Lombok is an open source code generation
+		project, designed to take away boilerplate code, like
+		generic getters and setters, and logging.
+		-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

@@ -47,7 +47,7 @@ public class MyApplicationRunner implements ApplicationRunner
         // Get all beers and set a stock amount for them
         beerRepository
                 .findAll()
-                .forEach(beer -> stockRepository.save(new Stock(new Random().nextInt(100), beer)));
+                .forEach(beer -> stockRepository.save(new Stock(beer, new Random().nextInt(100))));
         // Print the entire beer stock
         stockRepository.findAll().forEach(System.out::println);
         // Get the entire stock which has an amount of 30 or greater
@@ -57,5 +57,11 @@ public class MyApplicationRunner implements ApplicationRunner
         // Get the stock of a beer by beerId
         int quantity = stockRepository.getStockValueByBeerId(1000001L);
         System.out.println("Quantity: " + quantity);
+
+        // Get the list of beers and create a new stock for each
+        List<Beer> beersList = (List<Beer>) beerRepository.findAll();
+        beersList.stream()
+                .forEach(beer -> stockRepository
+                        .save(new Stock(beer, config.getQuantity())));
     }
 }
