@@ -40,6 +40,12 @@ public class Stock {
         this.beer = beer;
     }
 
+    // Id
+    public void setId(long id)
+    {
+        log.warning("Method setId called, but ignored.\nId will be set automatically...");
+    }
+
     @Override
     public String toString()
     {
