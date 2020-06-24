@@ -54,9 +54,6 @@ public class MyApplicationRunner implements ApplicationRunner
         Iterable<Stock> stocks = stockRepository.getAllByQuantityGreaterThanEqualOrderByQuantity(30);
         // Print te entire stock
         stocks.forEach(System.out::println);
-        // Get the stock of a beer by beerId
-        int quantity = stockRepository.getStockValueByBeerId(1000001L);
-        System.out.println("Quantity: " + quantity);
 
         // Get the list of beers and create a new stock for each
         List<Beer> beersList = (List<Beer>) beerRepository.findAll();

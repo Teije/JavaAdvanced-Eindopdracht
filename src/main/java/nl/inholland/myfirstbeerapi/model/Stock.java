@@ -52,7 +52,7 @@ public class Stock {
         final StringBuffer sb = new StringBuffer("Stock{");
         sb.append("id=").append(id);
         sb.append(", quantity=").append(quantity);
-        sb.append(", guitar=").append(beer);
+        sb.append(", beer=").append(beer);
         sb.append('}');
         return sb.toString();
     }
